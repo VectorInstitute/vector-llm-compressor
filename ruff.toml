@@ -1,0 +1,13 @@
+# Ruff Top-Level Settings.
+fix = true
+
+# Linting settings
+[lint]
+# Turn on isort and autofixes for isort
+extend-select = ["I"]
+extend-safe-fixes = ["I"]
+
+# isort settings
+[lint.isort]
+length-sort = true
+force-sort-within-sections = true
