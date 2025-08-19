@@ -1,6 +1,6 @@
-from datasets import Dataset, load_dataset
+from datasets import Dataset, IterableDataset, load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from llmcompressor.transformers import oneshot
+from llmcompressor import oneshot
 from llmcompressor.modifiers.smoothquant import SmoothQuantModifier
 from llmcompressor.modifiers.quantization import GPTQModifier
 
@@ -17,10 +17,11 @@ MAX_SEQUENCE_LENGTH = 2048
 
 # Load and preprocess the dataset
 ds = load_dataset("HuggingFaceH4/ultrachat_200k", split="train_sft")
-assert isinstance(ds, Dataset), "Must be a dataset"
-ds = ds.shuffle(seed=42).select(range(NUM_CALIBRATION_SAMPLES))
-
-
+if isinstance(ds, Dataset):
+    ds = ds.shuffle(seed=42).select(range(NUM_CALIBRATION_SAMPLES))
+else:
+    raise ValueError()
+ 
 def preprocess(example):
     return {"text": tokenizer.apply_chat_template(example["messages"], tokenize=False)}
 

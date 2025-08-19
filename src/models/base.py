@@ -1,14 +1,15 @@
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from typing import Any
 
 from transformers.modeling_utils import PreTrainedModel
 from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 
-class ModelBase:
-    @classmethod
+class ModelBase(ABC):
+    """Base class for loading pretrained models."""
+
     @abstractmethod
-    def get_model(cls, **kwargs: Any) -> PreTrainedModel:
+    def get_model(self, **kwargs: Any) -> PreTrainedModel:
         """Get the pretrained model
 
         Returns:
@@ -17,7 +18,19 @@ class ModelBase:
         """
         pass
 
+    @abstractmethod
+    def get_tokenizer(self, **kwargs: Any) -> PreTrainedTokenizerBase:
+        """Get the tokenizer for the pretrained model
+
+        Returns:
+            PreTrainedTokenizerBase: A huggingface compatible tokenizer
+        """
+        pass
+    
     @classmethod
     @abstractmethod
-    def get_tokenizer(cls, **kwargs: Any) -> PreTrainedTokenizerBase:
-        pass
+    def __help__(cls) -> str:
+        """
+        Returns:
+            str: A brief description of the pretrained model, used by CLI.
+        """

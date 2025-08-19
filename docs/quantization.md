@@ -88,10 +88,13 @@ SmoothQuant doens't actually quantize anything. Instead what it does is *smooth*
 
 In this repository we are going to focus on quantization libraries that are compatible with [vLLM](https://docs.vllm.ai/en/latest/features/quantization/index.html).
 
-It is important to note that vLLM does not support static
+It is important to note that vLLM does not support static activation quantization
 
 For now I'm only going to document llmcompressor since that what we're using at the moment. Want to get started on testing/implementation
 
 ### llmcompressor
 
+### llama.cpp
+
+### compressed-tensors
 
