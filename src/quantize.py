@@ -27,7 +27,7 @@ def parse_args() -> dict:
     parser.add_argument(
         "quantizer", type=str, help="One of the predefined quantizaters defined in this library. (string)"
     )
-    parser.add_argument("output-dir", type=str, help="Path to a folder in which to save the quantized model. (string)")
+    parser.add_argument("output_dir", type=str, help="Path to a folder in which to save the quantized model. (string)")
     parser.add_argument(
         "--quantizers",
         required=False,
