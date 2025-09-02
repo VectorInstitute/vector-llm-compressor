@@ -84,6 +84,10 @@ Also AWQ works best with asymettric quantization since the activations are not u
 
 SmoothQuant doens't actually quantize anything. Instead what it does is *smooth* the activations to reduce their range so that they are easier to quantize with higher precision. It does this by scaling the weights of the model based on the activations it sees during calibration with a calibration dataset to remove outlier activations. It's important to apply SmoothQuant smoothing before weight quantization. It originally was meant to be used with static PTQ activation quantization but many libraries apply it even when doing dynamic PTQ activation quantization in order to reduce the activation range within batches.
 
+<h3 style="display:inline">DWQ</h3> <em></em>
+
+Distilled Weight Quantization (DWQ) is an algorithm developped by Apple and part of their [mlx](https://github.com/ml-explore/mlx) machine learning framework. More details to come.
+
 ## Quantization Libraries
 
 In this repository we are going to focus on quantization libraries that are compatible with [vLLM](https://docs.vllm.ai/en/latest/features/quantization/index.html).

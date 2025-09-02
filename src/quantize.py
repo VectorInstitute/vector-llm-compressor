@@ -25,7 +25,7 @@ def parse_args() -> dict:
         help="The name of a dataset from the huggingface datasets library to use for calibration. (string)",
     )
     parser.add_argument(
-        "quantizer", type=str, help="One of the predefined quantizaters defined in this library. (string)"
+        "quantizer", type=str, help="One of the predefined quantizers defined in this library. (string)"
     )
     parser.add_argument("output_dir", type=str, help="Path to a folder in which to save the quantized model. (string)")
     parser.add_argument(
@@ -65,7 +65,7 @@ def parse_args() -> dict:
         "--quantizer-args",
         nargs="*",
         default=[],
-        help="Keyword arguments for the quantizater in `key=value` format delimited by spaces. WARNING: This flag/feature is not yet implemented.",
+        help="Keyword arguments for the quantizer in `key=value` format delimited by spaces. WARNING: This flag/feature is not yet implemented.",
     )
     # Would be cool to offer a flag where if you pass the recipe/dataset/model it prints out the special keyword arguments for the recipe/dataset/model
     # Probably should restructure to first split args into dataset, model and recipe. Then for each add flags for additional args that are specific to a specific recipe/dataset/model. Then base class should by default accept kwargs in constructor, and just retrieve the specific kwargs they expect.
